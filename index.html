@@ -58,7 +58,29 @@
                 url('card_bg.png') no-repeat center center;
             background-size: cover;
         }
-
+        
+        /* 放射状ペット画像の配置とアニメーション設定 */
+        .peeking-pets-radial {
+            position: absolute;
+            /* カードの中央を基準に配置 */
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.5); /* 初期位置：中央で小さく */
+            
+            width: 150%; /* カードより一回り大きく設定（適宜調整） */
+            height: auto;
+            z-index: -1; /* カードの裏側に配置 */            
+            opacity: 0; /* 最初は隠す */         
+            /* アニメーション：素早く大きく、少し弾む動き */
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+        }
+        
+        /* カードが開いたら（`show` クラスがついたら）、ペット画像をブワッと表示させる */
+        .card.show .peeking-pets-radial {
+            opacity: 1;
+            /* 元のサイズ（scale(1)）に戻して、所定の位置（中央）へ */
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
         /* 開封アニメーション */
         .card.show {
             opacity: 1; transform: translateY(0); pointer-events: auto;
@@ -94,6 +116,7 @@
             歯ボロボロなるで<br>
         </p>
         <div class="footer-message">2026.04.13</div>
+        <img src="pets_radial.png" class="peeking-pets-radial" alt="pets">
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
