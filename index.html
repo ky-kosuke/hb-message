@@ -46,7 +46,7 @@
 
         /* メッセージカード */
         .card {
-            top: 50%;
+            top: 40%;
             width: 70%; max-width: 300px;
             padding: 30px 10px; border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
@@ -63,10 +63,10 @@
         /* 放射状ペット画像の初期設定 */
         .peeking-pets-radial {
             position: fixed; /* 画面全体に対して中央に配置 */
-            top: 50%; left: 50%;
+            top: 40%; left: 50%;
             transform: translate(-50%, -50%) scale(0.5);
             width: 110%; /* スマホで見やすいサイズに調整 */
-            max-width: 380px;
+            max-width: 370px;
             z-index: 0; /* ★ここがポイント！カード(z-index:1)より小さく設定 */
             opacity: 0;
             transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
