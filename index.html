@@ -72,11 +72,11 @@
             pointer-events: none; /* タッチの邪魔をしないように */
         }
 
-/* クラスがついたらブワッと出す */
-.peeking-pets-radial.show {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.2); /* カードより少し大きく広がる */
-}
+        /* クラスがついたらブワッと出す */
+        .peeking-pets-radial.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2); /* カードより少し大きく広がる */
+        }
         
         /* 開封アニメーション */
         .card.show {
@@ -114,7 +114,7 @@
         </p>
         <div class="footer-message">2026.04.13</div>
     </div>
-    <img src="pets_radial.png" class="peeking-pets-radial" alt="pets">
+    <img src="pets_radial.png" id="pets-image" class="peeking-pets-radial" alt="pets">
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
