@@ -21,12 +21,15 @@
 
         /* 封筒の上のメッセージ */
         .tap-instruction {
-            /* ここでおしゃれなフォント「M PLUS Rounded 1c」を指定 */
-            font-family: 'M PLUS Rounded 1c', sans-serif;
-            font-size: 16px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 15px; /* 封筒との間隔 */
+            width: 280px;
+            height: 50px;
+            background: url('txt.png') no-repeat center center;
+            background-size: contain;
+            margin-bottom: 15px;
             opacity: 1; transition: opacity 0.5s;
         }
+
+        /* 古いフォント読み込み（M PLUS Rounded 1c）は不要なら消してもOK */
 
         /* 封筒のスタイル（透過PNG画像を使用） */
         .envelope {
