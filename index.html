@@ -95,6 +95,19 @@
         </p>
         <div class="footer-message">2026.04.13</div>
     </div>
-
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+    window.onload = function() {
+        // ページが開いて0.5秒後に紙吹雪を発射
+        setTimeout(() => {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#fbc2eb', '#a6c1ee', '#ff69b4']
+            });
+        }, 500);
+    }
+</script>
 </body>
 </html>
