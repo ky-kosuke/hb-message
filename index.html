@@ -51,7 +51,7 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             text-align: center; position: absolute;
             z-index: 1; opacity: 0; transform: translateY(50px);
-            transition: transform 1.0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s;
+            transition: transform 1.0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
             pointer-events: none;
             background:
                 linear-gradient(rgba(255, 255, 255, 0.9) 30%, rgba(255, 255, 255, 0.4) 100%),
@@ -64,7 +64,7 @@
             position: fixed; /* 画面全体に対して中央に配置 */
             top: 50%; left: 50%;
             transform: translate(-50%, -50%) scale(0.5);
-            width: 90%; /* スマホで見やすいサイズに調整 */
+            width: 120%; /* スマホで見やすいサイズに調整 */
             max-width: 500px;
             z-index: 0; /* ★ここがポイント！カード(z-index:1)より小さく設定 */
             opacity: 0;
@@ -75,7 +75,7 @@
         /* クラスがついたらブワッと出す */
         .peeking-pets-radial.show {
             opacity: 1;
-            transform: translate(-50%, -50%) scale(1.2); /* カードより少し大きく広がる */
+            transform: translate(-50%, -50%) scale(1.5); /* カードより少し大きく広がる */
         }
         
         /* 開封アニメーション */
