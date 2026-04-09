@@ -21,18 +21,17 @@
 
         /* 封筒の上のメッセージ */
         .tap-instruction {
-            width: 280px;
-            height: 50px;
+            width: 400px;
+            height: 100px;
             background: url('txt.png') no-repeat center center;
             background-size: contain;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             opacity: 1; transition: opacity 0.5s;
         }
 
         /* 封筒のスタイル（透過PNG画像を使用） */
         .envelope {
             width: 320px; height: 200px;
-            /* 画像ファイル名に合わせて変更 */
             background: url('huto.png') no-repeat center center;
             background-size: contain;
             cursor: pointer; position: relative;
@@ -56,7 +55,7 @@
             pointer-events: none;
         }
 
-        /* 開封アニメーション：カードが中央に現れる */
+        /* 開封アニメーション */
         .card.show {
             opacity: 1; transform: translateY(0); pointer-events: auto;
         }
