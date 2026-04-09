@@ -116,8 +116,8 @@
             歯ボロボロなるで<br>
         </p>
         <div class="footer-message">2026.04.13</div>
-        <img src="pets_radial.png" class="peeking-pets-radial" alt="pets">
     </div>
+    <img src="pets_radial.png" class="peeking-pets-radial" alt="pets">
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -155,12 +155,14 @@
             // コンテナごと操作
             const container = document.getElementById('envelopeContainer');
             const card = document.getElementById('card');
+            const pets = document.getElementById('pets-image');
             const particles = document.getElementById('particles-js');
 
             container.classList.add('open');
             
             setTimeout(() => {
                 card.classList.add('show');
+                pets.classList.add('show');
                 particles.style.opacity = '1';
             }, 200);
 
