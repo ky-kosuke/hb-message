@@ -28,13 +28,14 @@
         }
 
         .envelope::after {
-            content: "Tap to Open ✉️"; color: #aaa; font-size: 14px;
+            content: "✉️タップで開封してね✉️"; color: #aaa; font-size: 14px;
         }
 
-        /* 開封後の封筒（下にズラす） */
+        /* 開封後：封筒を透明にして下に少し落とす */
         .envelope.open {
-            transform: translateY(150px);
-            opacity: 0.8;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none; /* クリックできないようにする */
         }
 
         /* メッセージカード（最初は隠しておく） */
