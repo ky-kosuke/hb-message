@@ -4,54 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Message</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=M+PLUS+Rounded+1c:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* フェードインアニメーション */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         body {
             margin: 0; padding: 0; display: flex; justify-content: center; align-items: center;
             min-height: 100vh; background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            /* 全体の基本フォントはNoto Sans JP */
             font-family: 'Noto Sans JP', sans-serif; overflow: hidden;
         }
 
-        /* 封筒の見た目 */
-.envelope {
-            width: 320px; /* 画像のサイズに合わせて微調整 */
-            height: 200px;
-            background: url('huto.png') no-repeat center center;
+        /* 封筒とテキストをまとめるコンテナ */
+        .envelope-container {
+            display: flex; flex-direction: column; align-items: center;
+            position: relative; z-index: 2;
+        }
+
+        /* 封筒の上のメッセージ */
+        .tap-instruction {
+            /* ここでおしゃれなフォント「M PLUS Rounded 1c」を指定 */
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            font-size: 16px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 15px; /* 封筒との間隔 */
+            opacity: 1; transition: opacity 0.5s;
+        }
+
+        /* 封筒のスタイル（透過PNG画像を使用） */
+        .envelope {
+            width: 320px; height: 200px;
+            /* 画像ファイル名に合わせて変更 */
+            background: url('mcm_envelope.png') no-repeat center center;
             background-size: contain;
-            cursor: pointer;
-            position: relative;
-            z-index: 2;
+            cursor: pointer; position: relative;
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        /* 開封後：封筒を透明にして下に少し落とす */
-        .envelope.open {
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none; /* クリックできないようにする */
+        /* 開封後：封筒とメッセージの両方を透明にする */
+        .envelope-container.open .envelope,
+        .envelope-container.open .tap-instruction {
+            opacity: 0; transform: translateY(20px); pointer-events: none;
         }
 
-        /* メッセージカード（最初は隠しておく） */
+        /* メッセージカード */
         .card {
             background: white; width: 85%; max-width: 350px;
             padding: 40px 20px; border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             text-align: center; position: absolute;
-            z-index: 1; opacity: 0; transform: translateY(0);
-            transition: transform 1.2s ease-out, opacity 0.8s;
+            z-index: 1; opacity: 0; transform: translateY(50px);
+            transition: transform 1.0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s;
             pointer-events: none;
         }
 
-        /* 開封アニメーション：カードがせり上がる */
+        /* 開封アニメーション：カードが中央に現れる */
         .card.show {
-            opacity: 1; transform: translateY(-100px); /* 上にスッと出てくる */
-            pointer-events: auto;
+            opacity: 1; transform: translateY(0); pointer-events: auto;
         }
 
         .card::before {
@@ -68,7 +74,10 @@
 </head>
 <body>
 
-    <div class="envelope" id="envelope" onclick="openCard()"></div>
+    <div class="envelope-container" id="envelopeContainer" onclick="openCard()">
+        <div class="tap-instruction">♡タップして開封してね♡</div>
+        <div class="envelope" id="envelope"></div>
+    </div>
 
     <div class="card" id="card">
         <div class="birthday-icon">🎂</div>
@@ -92,23 +101,25 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
         function openCard() {
-            // 封筒とカードの要素を取得
-            const envelope = document.getElementById('envelope');
+            // コンテナごと操作
+            const container = document.getElementById('envelopeContainer');
             const card = document.getElementById('card');
 
-            // 封筒を消してカードを出す
-            envelope.classList.add('open');
-            card.classList.add('show');
+            container.classList.add('open');
+            
+            setTimeout(() => {
+                card.classList.add('show');
+            }, 200);
 
-            // カードが出てきた瞬間に紙吹雪！
+            // 紙吹雪
             setTimeout(() => {
                 confetti({
                     particleCount: 150,
                     spread: 100,
-                    origin: { y: 0.7 },
+                    origin: { y: 0.6 },
                     colors: ['#fbc2eb', '#a6c1ee', '#ff69b4', '#ffb6c1', '#ffffff']
                 });
-            }, 300);
+            }, 600);
         }
     </script>
 </body>
